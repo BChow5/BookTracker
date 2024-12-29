@@ -1,0 +1,219 @@
+ :root {
+    --dark_purple: #181825;
+    --purple_blue: #1e1e2e;
+    --light_blue: #b4befe; 
+    --light_grey: #8b92b0;
+    --light_purple: #5121d4; 
+ }
+
+ @font-face {
+    font-family: 'GeneralSansSemi';
+    src: url('./fonts/GeneralSans-Semibold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'GeneralSansMed';
+    src: url('./fonts/GeneralSans-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'GeneralSansLight';
+    src: url('./fonts/GeneralSans-Light.otf') format('opentype');
+}
+ 
+ body {
+    margin: 0;
+    padding: 0px;
+    font-family: 'GeneralSansMed' , sans-serif;
+    width: 100%;
+    background-color: var(--purple_blue);
+    color: white;
+}
+
+/* ---------------------------------- Nav Bar --------------------------------------*/
+
+span p {
+    padding: 15px;
+}
+
+nav {
+    background-color:var(--dark_purple); 
+    padding: 20px 20px; 
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    box-sizing: border-box;
+    justify-content: flex-start;
+    width: 100%;
+    height: 75px;
+}
+
+nav a {
+    color: white; 
+    text-decoration: none; 
+    margin-right: 15px; 
+    font-size: 1rem; 
+    transition: color 0.1s ease; 
+    font-family: 'GeneralSansSemi', sans-serif;
+}
+
+nav a:hover {
+    color: var(--light_blue);
+}
+
+h1 {
+    padding-left: 20px;
+}
+
+/* ---------------------------------- Add Book Button --------------------------------------*/
+
+#addBookButton {
+    padding: 10px 20px;
+    background-color: #5121d4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto;
+}
+
+#addBookButton:hover {
+    border: 1px solid var(--light_blue);
+}
+
+.popup {
+    display: none; /* Hide the popup by default */
+    position: fixed;
+    z-index: 1; /* Sit on top of the page */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup-content {
+    background-color: var(--dark_purple);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--light_grey);
+    width: 50%;
+    max-width: 500px;
+}
+
+.close {
+    color: var(--light_grey);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#submitButton {
+    padding: 10px 20px;
+    background-color: var(--light_purple);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formSection {
+    margin-bottom: 25px;
+}
+
+/* ---------------------------------- Book page style --------------------------------------*/
+
+#pageTitle {
+    justify-self: center;
+    font-size: 2rem;
+    grid-column: 2;
+    margin: 40px;
+}
+
+.books {
+    grid-template-columns: 10% 80% 10%;
+    display: grid;
+}
+
+#bookTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    grid-column: 2;
+}
+
+#bookTable th, #bookTable td {
+    border: 1px solid var(--light_grey);
+    padding: 8px;
+}
+
+#bookTable th {
+    background-color: var(--dark_purple);
+    font-weight: bold;
+}
+
+.col1 {
+    width: 30%;
+    
+}
+
+#col1span1 {
+    display: grid;
+    align-items: center;
+    gap: 10px;
+    grid-template-columns: 30% 70%;
+}
+
+#col1span2 {
+    grid-column: 2;
+}
+
+.col2 {
+    width: 20%;
+}
+
+.col3, .col4, .col5 {
+    width: 10%;
+}
+
+.col4 {
+    width: 20%;
+}
+
+.statusIcon {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.thumbnail {
+    width: 75px;
+    height: 100px;
+}
+
+/* ---------------------------------- Reccomended Book --------------------------------------*/
+
+.recommendedSection {
+    grid-template-columns: 10% 80% 10%;
+    display: grid;
+
+}
+
+#recommendedHeader {
+    grid-column: 2;
+    font-size: 2rem;
+    justify-self: center;
+    margin: 40px;
+}

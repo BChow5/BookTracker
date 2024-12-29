@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="recommendedSection">
+    <h1 id="recommendedHeader">Check Out These Recommended Books!</h1>
+    {% for book in books %}
+        <li class="book-item">
+            <div class="book-cover">
+                <img src="{{ book.thumbnail }}" alt="Book Cover" class="thumbnail">
+            </div>
+            <div class="book-details">
+                <h2>{{ book.title }}</h2>
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p>{{ book.description }}</p>
+            </div>
+        </li>
+    {% endfor %}
+</div>
+
+
+
+
+<!-- <h1>Add a Book</h1>
+    <form id="addBookForm">
+        <input type="text" id="title" placeholder="Title" required><br>
+        <input type="number" id="progress" placeholder="Progress" value="0"><br>
+        <input type="number" id="rating" placeholder="Rating" value="0"><br>
+        <input type="text" id="status" placeholder="Status" value="Plan To Read"><br>
+        <input type="text" id="url" placeholder="URL"><br>
+        <button type="submit">Add Book</button>
+    </form> -->
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="books">
+    <h1 id="pageTitle">My Bookshelf</h1>
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th class="col1">Title</th>
+                <th class="col2">Author</th>
+                <th class="col3">Rating</th>
+                <th class="col4">Status</th>
+                <th class="col5">Progress</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td class="col1"><span id="col1span1"> <img src="https://covers.openlibrary.org/b/id/{{ book.thumbnail }}-L.jpg" alt="" class="thumbnail"> <span id="col1span2">{{ book.title }}</span></span> </td>
+                <td>{{ book.author }} </td>
+                <td>{{ book.rating }}</td>
+                <td> 
+                    {% if book.status == "Complete" %}
+                        <img src="../static/9-128.png" alt="Complete" class="statusIcon">
+                    {% elif book.status == "Reading" %}
+                        <img src="../static/3-128.png" alt="Reading" class="statusIcon">
+                    {% else %}
+                        <img src="../static/15-128.png" alt="Plan to Read" class="statusIcon">
+                    {% endif %}
+                    {{ book.status }}
+                </td>
+                <td>{{ book.progress }} / {{ book.total_pages }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
