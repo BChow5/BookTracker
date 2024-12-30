@@ -26,41 +26,11 @@ db.init_app(app)
 # Route for the home page
 @app.route("/")
 def home():
-    url = 'https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json'
-    response = requests.get(url, params={'api-key': api_key})
+    # Render the books in the template
+    book_stmt = select(Book).where(Book.status == "Reading")
+    book_list = db.session.execute(book_stmt).scalars()
+    return render_template('home.html', books=book_list)
 
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        data = response.json()  # Convert response to JSON
-
-        # Check if 'results' exist in the response data
-        if 'results' in data:
-            books = data['results']
-            
-            # Prepare a list of books with relevant data
-            book_list = []
-            for book in books:
-                # Extract book details from the 'book_details' list
-                if 'book_details' in book and isinstance(book['book_details'], list):
-                    book_details = book['book_details'][0]  # Assuming the first item in the list is the desired one
-                    
-                    book_list.append({
-                        'title': book_details.get('title', 'No title'),
-                        'author': book_details.get('author', 'Unknown'),
-                        'description': book_details.get('description', 'No description available'),
-                        'thumbnail': book_details.get('cover_image', ''),  # Assuming cover_image is the image URL field
-                    })
-                else:
-                    print("No book_details found or wrong format")
-            
-            # Render the books in the template
-            return render_template('home.html', books=book_list)
-        else:
-            return "No books found in the response data", 404
-    else:
-        # If the API request failed, return an error message
-        return f"Failed to fetch data from the NYT API. Status Code: {response.status_code}", 500
-    
 # Route for the books listing page
 @app.route("/books")
 def book():

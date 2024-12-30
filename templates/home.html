@@ -1,33 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="recommendedSection">
-    <h1 id="recommendedHeader">Check Out These Recommended Books!</h1>
+<div class="readingSection">
+    <h1 id="readingHeader">Books You're Currently Reading!</h1>
     {% for book in books %}
-        <li class="book-item">
-            <div class="book-cover">
-                <img src="{{ book.thumbnail }}" alt="Book Cover" class="thumbnail">
+        <div class="book_items">
+            <div class="bookDetails">
+                <img src="https://covers.openlibrary.org/b/id/{{ book.thumbnail }}-L.jpg" alt="{{ book.title }}" class="homeThumbnail">
+                <p id="bookTitle">{{ book.title }}</p>
+                <p class="bookInfo">Author: {{ book.author }}</p>
+                <p class="bookInfo">Rating: {{ book.rating }}</p>
+                <p class="bookInfo">Progress:  {{ book.progress }} / {{ book.total_pages }} ({{ ((book.progress / book.total_pages) * 100) | int }}%)</p>
             </div>
-            <div class="book-details">
-                <h2>{{ book.title }}</h2>
-                <p><strong>Author:</strong> {{ book.author }}</p>
-                <p>{{ book.description }}</p>
-            </div>
-        </li>
+        </div>
     {% endfor %}
 </div>
-
-
-
-
-<!-- <h1>Add a Book</h1>
-    <form id="addBookForm">
-        <input type="text" id="title" placeholder="Title" required><br>
-        <input type="number" id="progress" placeholder="Progress" value="0"><br>
-        <input type="number" id="rating" placeholder="Rating" value="0"><br>
-        <input type="text" id="status" placeholder="Status" value="Plan To Read"><br>
-        <input type="text" id="url" placeholder="URL"><br>
-        <button type="submit">Add Book</button>
-    </form> -->
 
 {% endblock %}
